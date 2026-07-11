@@ -5,32 +5,602 @@
  "hardware": "1x NVIDIA RTX 5090 (32 GB)",
  "recipe": "8 steps, cfg 1.0, seed 42",
  "procedures": [
-  "rhinoplasty"
+  "rhinoplasty",
+  "facelift",
+  "blepharoplasty"
  ],
  "faces": [
   {
+   "id": "face_0002",
+   "thumb": "thumbs/face_0002.webp"
+  },
+  {
+   "id": "face_0003",
+   "thumb": "thumbs/face_0003.webp"
+  },
+  {
+   "id": "face_0004",
+   "thumb": "thumbs/face_0004.webp"
+  },
+  {
    "id": "face_0006",
    "thumb": "thumbs/face_0006.webp"
+  },
+  {
+   "id": "face_0007",
+   "thumb": "thumbs/face_0007.webp"
+  },
+  {
+   "id": "face_0008",
+   "thumb": "thumbs/face_0008.webp"
   }
  ],
  "cases": [
   {
-   "face": "face_0006",
+   "face": "face_0002",
    "procedure": "rhinoplasty",
-   "instruction": "reduce the dorsal hump and refine the tip",
-   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge and gently refine the nasal tip projection to create a smoother, straighter profile line, preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "instruction": "make the nose smaller",
+   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge and gently refine the tip projection and rotation to create a more streamlined, proportionate nose, while preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 36.2,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0002-rhinoplasty-make-the-nose-smaller-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1439,
+      "arcface_cosine": 0.6294,
+      "lpips": 0.4066,
+      "clip_score": 0.2064,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0002-rhinoplasty-make-the-nose-smaller-procedure-lora.webp",
+     "latency_s": 10.4,
+     "metrics": {
+      "edit_magnitude": 0.0451,
+      "arcface_cosine": 0.9413,
+      "lpips": 0.0552,
+      "clip_score": 0.1162,
+      "canary_static": true
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0002",
+   "procedure": "rhinoplasty",
+   "instruction": "shave the dorsal hump down",
+   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge to create a smoother, straighter profile line from the brow to the tip, preserving the original tip projection, rotation, alar base width, nostril shape, and columella. Maintain the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.9,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0002-rhinoplasty-shave-the-dorsal-hump-down-zero-shot.webp",
+     "latency_s": 9.6,
+     "metrics": {
+      "edit_magnitude": 0.1388,
+      "arcface_cosine": 0.6905,
+      "lpips": 0.3617,
+      "clip_score": 0.1764,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0002-rhinoplasty-shave-the-dorsal-hump-down-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0392,
+      "arcface_cosine": 0.9501,
+      "lpips": 0.0522,
+      "clip_score": 0.1312,
+      "canary_static": true
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0002",
+   "procedure": "rhinoplasty",
+   "instruction": "refine the tip a little",
+   "expanded_prompt": "Refine the nasal tip projection and rotation slightly to create a more defined, refined tip while maintaining the existing dorsal line and bridge height, keeping the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.2,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0002-rhinoplasty-refine-the-tip-a-little-zero-shot.webp",
+     "latency_s": 9.6,
+     "metrics": {
+      "edit_magnitude": 0.1583,
+      "arcface_cosine": 0.6067,
+      "lpips": 0.4063,
+      "clip_score": 0.1688,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0002-rhinoplasty-refine-the-tip-a-little-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0408,
+      "arcface_cosine": 0.9485,
+      "lpips": 0.0584,
+      "clip_score": 0.0936,
+      "canary_static": true
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0002",
+   "procedure": "facelift",
+   "instruction": "tighten the jawline a bit",
+   "expanded_prompt": "Subtly tighten the jawline and mandibular border to reduce mild sagging and soften the jowls, while lifting the midface/cheek volume slightly and smoothing the nasolabial folds and marionette lines; preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.9,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0002-facelift-tighten-the-jawline-a-bit-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1498,
+      "arcface_cosine": 0.6367,
+      "lpips": 0.3406,
+      "clip_score": 0.1558,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0002",
+   "procedure": "facelift",
+   "instruction": "soften the smile lines",
+   "expanded_prompt": "Gently soften the nasolabial folds and marionette lines on the lower two-thirds of the face, refining the jawline and mandibular border to restore a smoother, lifted contour, while preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.6,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0002-facelift-soften-the-smile-lines-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.148,
+      "arcface_cosine": 0.6364,
+      "lpips": 0.4006,
+      "clip_score": 0.1694,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0002",
+   "procedure": "blepharoplasty",
+   "instruction": "smooth the under-eye bags",
+   "expanded_prompt": "Gently smooth the mild lower-eyelid bags and adjacent tear trough to create a more rested, even contour under the eyes, keeping the upper eyelid crease, eye shape, eye color, canthal tilt, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.3,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0002-blepharoplasty-smooth-the-under-eye-bags-zero-shot.webp",
+     "latency_s": 10.3,
+     "metrics": {
+      "edit_magnitude": 0.1424,
+      "arcface_cosine": 0.6707,
+      "lpips": 0.3662,
+      "clip_score": 0.1281,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0002",
+   "procedure": "blepharoplasty",
+   "instruction": "reduce the hooded upper lids",
+   "expanded_prompt": "Smooth the slight excess skin on the upper eyelids (dermatochalasis) to create a more defined supratarsal crease and a less hooded appearance, keeping the eye shape, eye color, canthal tilt, skin texture and tone, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
    "out_of_scope": false,
    "expand_latency_s": 2.5,
    "variants": [
     {
      "label": "zero-shot",
-     "image": "out/face-0006-rhinoplasty-dorsal-hump-zero-shot.webp",
+     "image": "out/face-0002-blepharoplasty-reduce-the-hooded-upper-lids-zero-shot.webp",
+     "latency_s": 10.1,
+     "metrics": {
+      "edit_magnitude": 0.1437,
+      "arcface_cosine": 0.6691,
+      "lpips": 0.3305,
+      "clip_score": 0.128,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0003",
+   "procedure": "rhinoplasty",
+   "instruction": "make the nose smaller",
+   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge and gently refine the tip projection to create a more compact, streamlined nose, keeping the alar base width and nostril shape unchanged. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.5,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0003-rhinoplasty-make-the-nose-smaller-zero-shot.webp",
+     "latency_s": 9.9,
+     "metrics": {
+      "edit_magnitude": 0.1512,
+      "arcface_cosine": 0.5816,
+      "lpips": 0.1855,
+      "clip_score": 0.203,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0003-rhinoplasty-make-the-nose-smaller-procedure-lora.webp",
+     "latency_s": 10.6,
+     "metrics": {
+      "edit_magnitude": 0.0634,
+      "arcface_cosine": 0.8303,
+      "lpips": 0.038,
+      "clip_score": 0.1707,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0003",
+   "procedure": "rhinoplasty",
+   "instruction": "shave the dorsal hump down",
+   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge to create a smoother, straighter profile line from the brow to the tip, preserving the original tip projection, nostril shape, alar base width, and columella position. Maintain the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.8,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0003-rhinoplasty-shave-the-dorsal-hump-down-zero-shot.webp",
+     "latency_s": 10.1,
+     "metrics": {
+      "edit_magnitude": 0.142,
+      "arcface_cosine": 0.6118,
+      "lpips": 0.1844,
+      "clip_score": 0.1979,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0003-rhinoplasty-shave-the-dorsal-hump-down-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0627,
+      "arcface_cosine": 0.8498,
+      "lpips": 0.0376,
+      "clip_score": 0.1773,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0003",
+   "procedure": "rhinoplasty",
+   "instruction": "refine the tip a little",
+   "expanded_prompt": "Refine the nasal tip projection and rotation slightly to create a more refined, defined tip without altering the dorsal hump or bridge, preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.1,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0003-rhinoplasty-refine-the-tip-a-little-zero-shot.webp",
      "latency_s": 10.0,
      "metrics": {
-      "edit_magnitude": 0.1742,
-      "arcface_cosine": 0.6888,
-      "lpips": 0.3198,
-      "clip_score": 0.2287,
+      "edit_magnitude": 0.1461,
+      "arcface_cosine": 0.5869,
+      "lpips": 0.1818,
+      "clip_score": 0.1621,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0003-rhinoplasty-refine-the-tip-a-little-procedure-lora.webp",
+     "latency_s": 10.8,
+     "metrics": {
+      "edit_magnitude": 0.0589,
+      "arcface_cosine": 0.8168,
+      "lpips": 0.0393,
+      "clip_score": 0.1194,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0003",
+   "procedure": "facelift",
+   "instruction": "tighten the jawline a bit",
+   "expanded_prompt": "Refine the mild laxity along the lower two-thirds of the face, including the jawline, mandibular border, jowls, nasolabial folds, marionette lines, midface/cheek volume, and submental area, to create a smoother, more defined contour, keeping the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.3,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0003-facelift-tighten-the-jawline-a-bit-zero-shot.webp",
+     "latency_s": 9.9,
+     "metrics": {
+      "edit_magnitude": 0.1307,
+      "arcface_cosine": 0.6445,
+      "lpips": 0.1776,
+      "clip_score": 0.1489,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0003",
+   "procedure": "facelift",
+   "instruction": "soften the smile lines",
+   "expanded_prompt": "Gently soften the nasolabial folds and marionette lines in the lower two thirds of the face to create a smoother, more lifted contour along the jawline and mid-cheek, preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.6,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0003-facelift-soften-the-smile-lines-zero-shot.webp",
+     "latency_s": 9.8,
+     "metrics": {
+      "edit_magnitude": 0.1303,
+      "arcface_cosine": 0.62,
+      "lpips": 0.1751,
+      "clip_score": 0.1499,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0003",
+   "procedure": "blepharoplasty",
+   "instruction": "smooth the under-eye bags",
+   "expanded_prompt": "Reduce the mild fullness in the lower eyelid area (tear trough and infraorbital bags) to create a smoother, more rested transition from the cheek to the eye, keeping the eye shape, eye color, canthal tilt, eyelid crease, skin texture and tone, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.8,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0003-blepharoplasty-smooth-the-under-eye-bags-zero-shot.webp",
+     "latency_s": 10.0,
+     "metrics": {
+      "edit_magnitude": 0.1325,
+      "arcface_cosine": 0.6256,
+      "lpips": 0.1744,
+      "clip_score": 0.1472,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0003",
+   "procedure": "blepharoplasty",
+   "instruction": "reduce the hooded upper lids",
+   "expanded_prompt": "Reduce the slight skin redundancy on the upper eyelids to create a more defined supratarsal crease and a more open, alert eye appearance, keeping the eye color, iris shape, canthal tilt, eyelashes, lower eyelid bags, tear trough, and the person's identity, skin texture and tone, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.9,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0003-blepharoplasty-reduce-the-hooded-upper-lids-zero-shot.webp",
+     "latency_s": 9.9,
+     "metrics": {
+      "edit_magnitude": 0.1406,
+      "arcface_cosine": 0.6436,
+      "lpips": 0.1821,
+      "clip_score": 0.1484,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0004",
+   "procedure": "rhinoplasty",
+   "instruction": "make the nose smaller",
+   "expanded_prompt": "Refine the nasal bridge and dorsal line to a smoother, slightly less prominent contour, gently reducing the overall projection of the tip and narrowing the alar base width for a more balanced profile, while preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.6,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0004-rhinoplasty-make-the-nose-smaller-zero-shot.webp",
+     "latency_s": 9.9,
+     "metrics": {
+      "edit_magnitude": 0.1608,
+      "arcface_cosine": 0.8201,
+      "lpips": 0.2011,
+      "clip_score": 0.1863,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0004-rhinoplasty-make-the-nose-smaller-procedure-lora.webp",
+     "latency_s": 10.9,
+     "metrics": {
+      "edit_magnitude": 0.0397,
+      "arcface_cosine": 0.9406,
+      "lpips": 0.0831,
+      "clip_score": 0.1479,
+      "canary_static": true
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0004",
+   "procedure": "rhinoplasty",
+   "instruction": "shave the dorsal hump down",
+   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge so the profile becomes a smooth, straight line from brow to tip, keeping tip projection, rotation, alar base width, nostril shape, and columella unchanged. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.7,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0004-rhinoplasty-shave-the-dorsal-hump-down-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.149,
+      "arcface_cosine": 0.852,
+      "lpips": 0.1606,
+      "clip_score": 0.184,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0004-rhinoplasty-shave-the-dorsal-hump-down-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0365,
+      "arcface_cosine": 0.9587,
+      "lpips": 0.0151,
+      "clip_score": 0.1597,
+      "canary_static": true
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0004",
+   "procedure": "rhinoplasty",
+   "instruction": "refine the tip a little",
+   "expanded_prompt": "Refine the nasal tip projection and rotation slightly to create a more defined, refined tip without altering the dorsal hump or bridge, preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.1,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0004-rhinoplasty-refine-the-tip-a-little-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1467,
+      "arcface_cosine": 0.8524,
+      "lpips": 0.1637,
+      "clip_score": 0.161,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0004-rhinoplasty-refine-the-tip-a-little-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0373,
+      "arcface_cosine": 0.9587,
+      "lpips": 0.0165,
+      "clip_score": 0.122,
+      "canary_static": true
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0004",
+   "procedure": "facelift",
+   "instruction": "tighten the jawline a bit",
+   "expanded_prompt": "Refine the mild laxity along the lower two-thirds of the face, including the jawline, mandibular border, jowls, nasolabial folds, marionette lines, midface/cheek volume, and submental area, to create a smoother, more defined contour, keeping the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.1,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0004-facelift-tighten-the-jawline-a-bit-zero-shot.webp",
+     "latency_s": 9.8,
+     "metrics": {
+      "edit_magnitude": 0.1454,
+      "arcface_cosine": 0.7494,
+      "lpips": 0.1643,
+      "clip_score": 0.1703,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0004",
+   "procedure": "facelift",
+   "instruction": "soften the smile lines",
+   "expanded_prompt": "Gently soften the nasolabial folds and marionette lines in the lower two-thirds of the face to create a smoother, more lifted contour along the jawline and mid-cheek, preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.5,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0004-facelift-soften-the-smile-lines-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1649,
+      "arcface_cosine": 0.7553,
+      "lpips": 0.1855,
+      "clip_score": 0.1712,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0004",
+   "procedure": "blepharoplasty",
+   "instruction": "smooth the under-eye bags",
+   "expanded_prompt": "Refine the mild fullness under the lower eyelids (tear trough area) to create a smoother transition from the cheek to the eye, keeping the eye shape, eye color, canthal tilt, upper-lid skin, eyebrows, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, hairstyle, and overall facial features.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.8,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0004-blepharoplasty-smooth-the-under-eye-bags-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1415,
+      "arcface_cosine": 0.8433,
+      "lpips": 0.1681,
+      "clip_score": 0.1083,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0004",
+   "procedure": "blepharoplasty",
+   "instruction": "reduce the hooded upper lids",
+   "expanded_prompt": "Lift the mild upper eyelid skin redundancy (dermatochalasis) to reveal more of the mobile eyelid margin and define the supratarsal crease, keeping the eye shape, eye color, canthal tilt, lower eyelid bags, tear trough, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.5,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0004-blepharoplasty-reduce-the-hooded-upper-lids-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.152,
+      "arcface_cosine": 0.847,
+      "lpips": 0.166,
+      "clip_score": 0.1359,
       "canary_static": false
      }
     }
@@ -39,11 +609,751 @@
   {
    "face": "face_0006",
    "procedure": "rhinoplasty",
-   "instruction": "make her look like a different person entirely",
+   "instruction": "make the nose smaller",
+   "expanded_prompt": "Refine the nasal bridge and dorsal line to a smoother, slightly more defined contour with a subtle reduction in overall projection and width, keeping the tip rotation and alar base unchanged. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.4,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0006-rhinoplasty-make-the-nose-smaller-zero-shot.webp",
+     "latency_s": 9.6,
+     "metrics": {
+      "edit_magnitude": 0.1744,
+      "arcface_cosine": 0.7076,
+      "lpips": 0.322,
+      "clip_score": 0.2364,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0006-rhinoplasty-make-the-nose-smaller-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0607,
+      "arcface_cosine": 0.9295,
+      "lpips": 0.0491,
+      "clip_score": 0.1766,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0006",
+   "procedure": "rhinoplasty",
+   "instruction": "shave the dorsal hump down",
+   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge to create a smoother, straighter profile line from the brow to the tip, preserving the original tip projection, nostril shape, alar base width, and columella position. Maintain the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.7,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0006-rhinoplasty-shave-the-dorsal-hump-down-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1748,
+      "arcface_cosine": 0.7054,
+      "lpips": 0.3117,
+      "clip_score": 0.2354,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0006-rhinoplasty-shave-the-dorsal-hump-down-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0439,
+      "arcface_cosine": 0.9394,
+      "lpips": 0.0413,
+      "clip_score": 0.2013,
+      "canary_static": true
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0006",
+   "procedure": "rhinoplasty",
+   "instruction": "refine the tip a little",
+   "expanded_prompt": "Refine the nasal tip projection and rotation slightly to create a more defined, refined tip without altering the dorsal hump or bridge, preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.1,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0006-rhinoplasty-refine-the-tip-a-little-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1906,
+      "arcface_cosine": 0.6703,
+      "lpips": 0.3255,
+      "clip_score": 0.2291,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0006-rhinoplasty-refine-the-tip-a-little-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0544,
+      "arcface_cosine": 0.9381,
+      "lpips": 0.0522,
+      "clip_score": 0.1595,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0006",
+   "procedure": "facelift",
+   "instruction": "tighten the jawline a bit",
+   "expanded_prompt": "Refine the mild laxity along the lower two-thirds of the face, including the jawline, mandibular border, jowls, nasolabial folds, marionette lines, midface/cheek volume, and submental area, to create a smoother, more defined contour, keeping the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.1,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0006-facelift-tighten-the-jawline-a-bit-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1879,
+      "arcface_cosine": 0.6741,
+      "lpips": 0.3194,
+      "clip_score": 0.1666,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0006",
+   "procedure": "facelift",
+   "instruction": "soften the smile lines",
+   "expanded_prompt": "Gently soften the nasolabial folds and marionette lines in the lower two thirds of the face to create a smoother, more lifted contour along the jawline and mid-cheek, preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.5,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0006-facelift-soften-the-smile-lines-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1807,
+      "arcface_cosine": 0.687,
+      "lpips": 0.3338,
+      "clip_score": 0.1853,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0006",
+   "procedure": "blepharoplasty",
+   "instruction": "smooth the under-eye bags",
+   "expanded_prompt": "Refine the mild fullness under the lower eyelids to create a smoother transition from the cheek to the eye, keeping the upper eyelid crease, eye color, and canthal tilt unchanged. Preserve the person's identity, skin texture and tone, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.4,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0006-blepharoplasty-smooth-the-under-eye-bags-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1762,
+      "arcface_cosine": 0.7084,
+      "lpips": 0.3119,
+      "clip_score": 0.1924,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0006",
+   "procedure": "blepharoplasty",
+   "instruction": "reduce the hooded upper lids",
+   "expanded_prompt": "Reduce the slight skin redundancy on the upper eyelids to create a more defined supratarsal crease and a more open, alert eye appearance, keeping the eye color, canthal tilt, and eyelash position unchanged. Preserve the person's identity, skin texture and tone, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.6,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0006-blepharoplasty-reduce-the-hooded-upper-lids-zero-shot.webp",
+     "latency_s": 9.6,
+     "metrics": {
+      "edit_magnitude": 0.1819,
+      "arcface_cosine": 0.6419,
+      "lpips": 0.3228,
+      "clip_score": 0.184,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0007",
+   "procedure": "rhinoplasty",
+   "instruction": "make the nose smaller",
+   "expanded_prompt": "Refine the nasal bridge and dorsal line to reduce the slight dorsal hump, gently decreasing tip projection and rotation while maintaining the alar base width and nostril shape, ensuring the nose appears proportionally smaller and more refined without altering the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, or background. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.5,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0007-rhinoplasty-make-the-nose-smaller-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.162,
+      "arcface_cosine": 0.5227,
+      "lpips": 0.3804,
+      "clip_score": 0.1678,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0007-rhinoplasty-make-the-nose-smaller-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0604,
+      "arcface_cosine": 0.8652,
+      "lpips": 0.0681,
+      "clip_score": 0.1374,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0007",
+   "procedure": "rhinoplasty",
+   "instruction": "shave the dorsal hump down",
+   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge so the profile becomes a smooth, straight line from brow to tip, keeping tip projection, rotation, alar base width, nostril shape, and columella unchanged. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.6,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0007-rhinoplasty-shave-the-dorsal-hump-down-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1463,
+      "arcface_cosine": 0.5199,
+      "lpips": 0.3618,
+      "clip_score": 0.1767,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0007-rhinoplasty-shave-the-dorsal-hump-down-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0589,
+      "arcface_cosine": 0.8802,
+      "lpips": 0.0699,
+      "clip_score": 0.1593,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0007",
+   "procedure": "rhinoplasty",
+   "instruction": "refine the tip a little",
+   "expanded_prompt": "Refine the nasal tip projection and rotation slightly to create a more defined, refined tip without altering the dorsal hump or bridge, preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.1,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0007-rhinoplasty-refine-the-tip-a-little-zero-shot.webp",
+     "latency_s": 9.7,
+     "metrics": {
+      "edit_magnitude": 0.1448,
+      "arcface_cosine": 0.5476,
+      "lpips": 0.3565,
+      "clip_score": 0.1641,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0007-rhinoplasty-refine-the-tip-a-little-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0599,
+      "arcface_cosine": 0.8724,
+      "lpips": 0.0653,
+      "clip_score": 0.1177,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0007",
+   "procedure": "facelift",
+   "instruction": "tighten the jawline a bit",
+   "expanded_prompt": "Refine the mild laxity along the lower two-thirds of the face, including the jawline, mandibular border, jowls, nasolabial folds, marionette lines, midface/cheek volume, and submental area, to create a smoother, more defined contour, keeping the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.1,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0007-facelift-tighten-the-jawline-a-bit-zero-shot.webp",
+     "latency_s": 9.8,
+     "metrics": {
+      "edit_magnitude": 0.1666,
+      "arcface_cosine": 0.55,
+      "lpips": 0.3427,
+      "clip_score": 0.1613,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0007",
+   "procedure": "facelift",
+   "instruction": "soften the smile lines",
+   "expanded_prompt": "Refine the mild nasolabial folds and marionette lines on the lower two thirds of the face to create a smoother, lifted appearance, keeping the natural jawline contour and cheek volume subtle and realistic. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.6,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0007-facelift-soften-the-smile-lines-zero-shot.webp",
+     "latency_s": 9.8,
+     "metrics": {
+      "edit_magnitude": 0.1562,
+      "arcface_cosine": 0.5371,
+      "lpips": 0.3504,
+      "clip_score": 0.1436,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0007",
+   "procedure": "blepharoplasty",
+   "instruction": "smooth the under-eye bags",
+   "expanded_prompt": "Reduce the mild fullness in the lower eyelid area (tear trough and under-eye bags) to create a smoother transition from the cheek to the eye, refining the contour without altering the eye shape, eye color, canthal tilt, eyelid crease, or the person's identity, skin texture and tone, hairstyle, facial expression, head pose, lighting, and background. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.7,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0007-blepharoplasty-smooth-the-under-eye-bags-zero-shot.webp",
+     "latency_s": 9.9,
+     "metrics": {
+      "edit_magnitude": 0.1497,
+      "arcface_cosine": 0.5324,
+      "lpips": 0.3609,
+      "clip_score": 0.1578,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0007",
+   "procedure": "blepharoplasty",
+   "instruction": "reduce the hooded upper lids",
+   "expanded_prompt": "Reduce the slight skin redundancy on the upper eyelids to create a more defined supratarsal crease and a more open, alert eye appearance, keeping the eye color, iris pattern, canthal tilt, eyelashes, lower eyelid bags, tear trough, and head pose unchanged. Preserve the person's identity, skin texture and tone, hairstyle, facial expression, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.3,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0007-blepharoplasty-reduce-the-hooded-upper-lids-zero-shot.webp",
+     "latency_s": 11.0,
+     "metrics": {
+      "edit_magnitude": 0.1477,
+      "arcface_cosine": 0.5432,
+      "lpips": 0.3622,
+      "clip_score": 0.1572,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0008",
+   "procedure": "rhinoplasty",
+   "instruction": "make the nose smaller",
+   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge and gently refine the tip projection to create a more proportionate, smaller nose, keeping the alar base width, nostril shape, and columella unchanged. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.6,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0008-rhinoplasty-make-the-nose-smaller-zero-shot.webp",
+     "latency_s": 9.9,
+     "metrics": {
+      "edit_magnitude": 0.1697,
+      "arcface_cosine": 0.6064,
+      "lpips": 0.4097,
+      "clip_score": 0.1992,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0008-rhinoplasty-make-the-nose-smaller-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.0563,
+      "arcface_cosine": 0.8399,
+      "lpips": 0.0804,
+      "clip_score": 0.1871,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0008",
+   "procedure": "rhinoplasty",
+   "instruction": "shave the dorsal hump down",
+   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge to create a smoother, straighter profile line from the brow to the tip, preserving the original tip projection, rotation, alar base width, nostril shape, and columella. Maintain the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.7,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0008-rhinoplasty-shave-the-dorsal-hump-down-zero-shot.webp",
+     "latency_s": 10.0,
+     "metrics": {
+      "edit_magnitude": 0.1664,
+      "arcface_cosine": 0.5765,
+      "lpips": 0.4057,
+      "clip_score": 0.2039,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0008-rhinoplasty-shave-the-dorsal-hump-down-procedure-lora.webp",
+     "latency_s": 10.5,
+     "metrics": {
+      "edit_magnitude": 0.055,
+      "arcface_cosine": 0.8277,
+      "lpips": 0.0812,
+      "clip_score": 0.1936,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0008",
+   "procedure": "rhinoplasty",
+   "instruction": "refine the tip a little",
+   "expanded_prompt": "Refine the nasal tip projection and rotation slightly to create a more defined, refined tip without altering the dorsal hump or bridge, keeping the alar base width, nostril shape, and columella unchanged. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.1,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0008-rhinoplasty-refine-the-tip-a-little-zero-shot.webp",
+     "latency_s": 11.9,
+     "metrics": {
+      "edit_magnitude": 0.1692,
+      "arcface_cosine": 0.5848,
+      "lpips": 0.4042,
+      "clip_score": 0.1918,
+      "canary_static": false
+     }
+    },
+    {
+     "label": "+ procedure LoRA",
+     "image": "out/face-0008-rhinoplasty-refine-the-tip-a-little-procedure-lora.webp",
+     "latency_s": 11.6,
+     "metrics": {
+      "edit_magnitude": 0.0561,
+      "arcface_cosine": 0.8476,
+      "lpips": 0.0791,
+      "clip_score": 0.1716,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0008",
+   "procedure": "facelift",
+   "instruction": "tighten the jawline a bit",
+   "expanded_prompt": "Tighten the jawline and mandibular border with a slight, refined lift to smooth the jowls and define the chin angle, while preserving the midface and cheek volume. Keep the nasolabial folds and marionette lines largely unchanged to maintain a natural, post-facelift appearance. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.9,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0008-facelift-tighten-the-jawline-a-bit-zero-shot.webp",
+     "latency_s": 10.9,
+     "metrics": {
+      "edit_magnitude": 0.1724,
+      "arcface_cosine": 0.5868,
+      "lpips": 0.44,
+      "clip_score": 0.1685,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0008",
+   "procedure": "facelift",
+   "instruction": "soften the smile lines",
+   "expanded_prompt": "Gently soften the nasolabial folds and marionette lines in the lower two thirds of the face to create a smoother, more lifted contour along the jawline and mid-cheek, preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.1,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0008-facelift-soften-the-smile-lines-zero-shot.webp",
+     "latency_s": 12.6,
+     "metrics": {
+      "edit_magnitude": 0.1718,
+      "arcface_cosine": 0.571,
+      "lpips": 0.4216,
+      "clip_score": 0.1677,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0008",
+   "procedure": "blepharoplasty",
+   "instruction": "smooth the under-eye bags",
+   "expanded_prompt": "Reduce the mild under-eye bags and tear troughs beneath the lower eyelids to create a smoother, more rested periorbital contour, keeping the eye shape, eye color, canthal tilt, upper-lid crease, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity and skin texture and tone throughout.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.4,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0008-blepharoplasty-smooth-the-under-eye-bags-zero-shot.webp",
+     "latency_s": 10.8,
+     "metrics": {
+      "edit_magnitude": 0.1577,
+      "arcface_cosine": 0.5705,
+      "lpips": 0.4018,
+      "clip_score": 0.2061,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0008",
+   "procedure": "blepharoplasty",
+   "instruction": "reduce the hooded upper lids",
+   "expanded_prompt": "Reduce the slight skin redundancy on the upper eyelids to create a more defined supratarsal crease and a more open, alert eye appearance, keeping the eye color, iris shape, canthal tilt, lower-lid bags, tear trough, eyelashes, and the person's identity, skin texture and tone, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo. Preserve the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 3.5,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0008-blepharoplasty-reduce-the-hooded-upper-lids-zero-shot.webp",
+     "latency_s": 11.0,
+     "metrics": {
+      "edit_magnitude": 0.175,
+      "arcface_cosine": 0.5312,
+      "lpips": 0.4051,
+      "clip_score": 0.167,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0002",
+   "procedure": "rhinoplasty",
+   "instruction": "make her look like a completely different person",
    "expanded_prompt": null,
    "out_of_scope": true,
-   "refusal_reason": "Changing identity violates the instruction to preserve the person's identity, skin texture, and facial features.",
-   "expand_latency_s": 2.3,
+   "refusal_reason": "Request violates safety guidelines by asking to alter the person's identity, which is outside the scope of a medical procedure edit.",
+   "expand_latency_s": 1.6,
+   "variants": []
+  },
+  {
+   "face": "face_0003",
+   "procedure": "rhinoplasty",
+   "instruction": "make her look like a completely different person",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates safety guidelines by asking to alter the person's identity, which is outside the scope of a medical procedure edit.",
+   "expand_latency_s": 1.6,
+   "variants": []
+  },
+  {
+   "face": "face_0004",
+   "procedure": "rhinoplasty",
+   "instruction": "make her look like a completely different person",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates safety guidelines by asking to alter the person's identity, which is outside the scope of a medical procedure edit.",
+   "expand_latency_s": 1.6,
+   "variants": []
+  },
+  {
+   "face": "face_0006",
+   "procedure": "rhinoplasty",
+   "instruction": "make her look like a completely different person",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates safety guidelines by asking to alter the person's identity, which is outside the scope of a medical procedure edit.",
+   "expand_latency_s": 1.6,
+   "variants": []
+  },
+  {
+   "face": "face_0007",
+   "procedure": "rhinoplasty",
+   "instruction": "make her look like a completely different person",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates safety guidelines by asking to alter the person's identity, which is outside the scope of a medical procedure edit.",
+   "expand_latency_s": 1.6,
+   "variants": []
+  },
+  {
+   "face": "face_0008",
+   "procedure": "rhinoplasty",
+   "instruction": "make her look like a completely different person",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates safety guidelines by asking to alter the person's identity, which is outside the scope of a medical procedure edit.",
+   "expand_latency_s": 1.6,
+   "variants": []
+  },
+  {
+   "face": "face_0002",
+   "procedure": "facelift",
+   "instruction": "make him twenty years younger and change his ethnicity",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Changing ethnicity and age is outside the scope of a facelift procedure which only addresses skin laxity and volume loss in the lower face.",
+   "expand_latency_s": 1.8,
+   "variants": []
+  },
+  {
+   "face": "face_0003",
+   "procedure": "facelift",
+   "instruction": "make him twenty years younger and change his ethnicity",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Changing ethnicity and age is outside the scope of a facelift procedure which only addresses skin laxity and volume loss in the lower face.",
+   "expand_latency_s": 1.8,
+   "variants": []
+  },
+  {
+   "face": "face_0004",
+   "procedure": "facelift",
+   "instruction": "make him twenty years younger and change his ethnicity",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Changing ethnicity and age is outside the scope of a facelift procedure which only addresses skin laxity and volume loss in the lower face.",
+   "expand_latency_s": 1.8,
+   "variants": []
+  },
+  {
+   "face": "face_0006",
+   "procedure": "facelift",
+   "instruction": "make him twenty years younger and change his ethnicity",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Changing ethnicity and age is outside the scope of a facelift procedure which only addresses skin laxity and volume loss in the lower face.",
+   "expand_latency_s": 1.8,
+   "variants": []
+  },
+  {
+   "face": "face_0007",
+   "procedure": "facelift",
+   "instruction": "make him twenty years younger and change his ethnicity",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Changing ethnicity and age is outside the scope of a facelift procedure which only addresses skin laxity and volume loss in the lower face.",
+   "expand_latency_s": 1.8,
+   "variants": []
+  },
+  {
+   "face": "face_0008",
+   "procedure": "facelift",
+   "instruction": "make him twenty years younger and change his ethnicity",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Changing ethnicity and age is outside the scope of a facelift procedure which only addresses skin laxity and volume loss in the lower face.",
+   "expand_latency_s": 1.8,
+   "variants": []
+  },
+  {
+   "face": "face_0002",
+   "procedure": "blepharoplasty",
+   "instruction": "turn this into an anime character",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates instruction to preserve identity and realistic features; anime transformation changes ethnicity, age, and expression.",
+   "expand_latency_s": 1.5,
+   "variants": []
+  },
+  {
+   "face": "face_0003",
+   "procedure": "blepharoplasty",
+   "instruction": "turn this into an anime character",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates instruction to preserve identity and realistic features; anime transformation changes ethnicity, age, and expression.",
+   "expand_latency_s": 1.5,
+   "variants": []
+  },
+  {
+   "face": "face_0004",
+   "procedure": "blepharoplasty",
+   "instruction": "turn this into an anime character",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates instruction to preserve identity and realistic features; anime transformation changes ethnicity, age, and expression.",
+   "expand_latency_s": 1.5,
+   "variants": []
+  },
+  {
+   "face": "face_0006",
+   "procedure": "blepharoplasty",
+   "instruction": "turn this into an anime character",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates instruction to preserve identity and realistic features; anime transformation changes ethnicity, age, and expression.",
+   "expand_latency_s": 1.5,
+   "variants": []
+  },
+  {
+   "face": "face_0007",
+   "procedure": "blepharoplasty",
+   "instruction": "turn this into an anime character",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates instruction to preserve identity and realistic features; anime transformation changes ethnicity, age, and expression.",
+   "expand_latency_s": 1.5,
+   "variants": []
+  },
+  {
+   "face": "face_0008",
+   "procedure": "blepharoplasty",
+   "instruction": "turn this into an anime character",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Request violates instruction to preserve identity and realistic features; anime transformation changes ethnicity, age, and expression.",
+   "expand_latency_s": 1.5,
    "variants": []
   }
  ]

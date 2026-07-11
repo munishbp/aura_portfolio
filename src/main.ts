@@ -33,6 +33,7 @@ async function boot(): Promise<void> {
   state.face = m.faces[0].id;
   state.procedure = m.procedures[0];
   state.instruction = firstInstruction();
+  state.variantIdx = defaultVariant(currentCase());
   render();
 }
 
@@ -51,6 +52,11 @@ function currentCase(): Case | undefined {
   return casesFor(state.face, state.procedure).find(
     (c) => c.instruction === state.instruction
   );
+}
+
+function defaultVariant(c: Case | undefined): number {
+  // show the strongest result first (the procedure-LoRA variant is last)
+  return c ? Math.max(0, c.variants.length - 1) : 0;
 }
 
 // ---------------------------------------------------------------------------
@@ -99,7 +105,7 @@ function render(): void {
     b.addEventListener("click", () => {
       state.face = b.dataset.face!;
       state.instruction = firstInstruction();
-      state.variantIdx = 0;
+      state.variantIdx = defaultVariant(currentCase());
       render();
     })
   );
@@ -107,14 +113,14 @@ function render(): void {
     b.addEventListener("click", () => {
       state.procedure = b.dataset.proc!;
       state.instruction = firstInstruction();
-      state.variantIdx = 0;
+      state.variantIdx = defaultVariant(currentCase());
       render();
     })
   );
   document.querySelectorAll<HTMLButtonElement>(".chip").forEach((b) =>
     b.addEventListener("click", () => {
       state.instruction = b.dataset.instr!;
-      state.variantIdx = 0;
+      state.variantIdx = defaultVariant(currentCase());
       render();
     })
   );
