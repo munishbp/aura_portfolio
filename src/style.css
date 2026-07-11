@@ -25,6 +25,19 @@
 
 html { scroll-behavior: smooth; }
 
+/* background video, same treatment as the original homepage */
+.bg-video {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: -2; pointer-events: none;
+}
+.video-overlay {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.6), rgba(26, 26, 26, 0.93) 520px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .bg-video { display: none; }
+}
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -40,15 +53,13 @@ header { border-bottom: 1px solid var(--line); padding-bottom: 26px; margin-bott
   font: 600 12px/1 var(--sans); letter-spacing: 0.2em; color: var(--text-2);
   text-transform: uppercase;
 }
-header h1 {
-  font: 500 clamp(38px, 6vw, 56px)/1.05 var(--display); color: var(--text);
-  margin-top: 14px; letter-spacing: 0.01em;
-}
+header h1 { margin-top: 16px; }
+.brand-logo { height: clamp(44px, 7vw, 68px); width: auto; display: block; }
 header .sub { color: var(--text-2); font-size: 14px; margin-top: 10px; }
 header .lede { max-width: 64ch; margin-top: 16px; color: var(--text-2); }
 .provenance {
   margin-top: 16px; font-size: 12.5px; color: var(--muted);
-  background: var(--card); border: 1px solid var(--line-soft);
+  background: rgba(34, 34, 34, 0.88); border: 1px solid var(--line-soft);
   border-radius: 0.5rem; padding: 10px 14px; display: inline-block;
 }
 
@@ -105,8 +116,9 @@ section { border-top: 1px solid var(--line-soft); padding: 28px 0 8px; margin-to
 
 /* ── expander card ──────────────────────────────────── */
 .expander-card {
-  background: var(--card); border: 1px solid var(--line-soft);
+  background: rgba(34, 34, 34, 0.88); border: 1px solid var(--line-soft);
   border-radius: 0.5rem; padding: 18px 20px;
+  backdrop-filter: blur(2px);
 }
 .expander-card .cardlabel {
   display: flex; justify-content: space-between; font: 600 11px/1 var(--sans);
@@ -171,7 +183,7 @@ section { border-top: 1px solid var(--line-soft); padding: 28px 0 8px; margin-to
 /* ── metric tiles ───────────────────────────────────── */
 .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
 .tile {
-  background: var(--card); border: 1px solid var(--line-soft);
+  background: rgba(34, 34, 34, 0.88); border: 1px solid var(--line-soft);
   border-radius: 0.5rem; padding: 14px 16px 12px;
 }
 .tile .k { font: 600 10.5px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
@@ -183,7 +195,12 @@ section { border-top: 1px solid var(--line-soft); padding: 28px 0 8px; margin-to
   font-size: 13.5px; padding: 9px 16px; border: 1px solid; border-radius: 9999px;
 }
 .canary.ok { color: var(--green); border-color: rgba(90, 173, 122, 0.45); background: rgba(90, 173, 122, 0.08); }
-.canary.bad { color: #f19a95; border-color: rgba(239, 68, 68, 0.5); background: rgba(239, 68, 68, 0.08); }
+.canary.bad {
+  color: #f19a95; border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.08); animation: pulse 1.5s infinite;
+}
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .canary.bad { animation: none; } }
 
 /* ── pipeline footer ────────────────────────────────── */
 .pipeline { font-size: 13px; color: var(--text-2); line-height: 2.1; }

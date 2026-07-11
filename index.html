@@ -11,10 +11,14 @@
     <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
+    <video class="bg-video" autoplay muted loop playsinline aria-hidden="true">
+      <source src="ocean.webm" type="video/webm" />
+    </video>
+    <div class="video-overlay" aria-hidden="true"></div>
     <div class="wrap">
       <header>
         <div class="kicker">Interactive Demo</div>
-        <h1>AURA</h1>
+        <h1><img class="brand-logo" src="logo.png" alt="AURA" /></h1>
         <div class="sub">AI surgical outcome previews, straight from the real pipeline</div>
         <p class="lede">
           A face photo and one line of surgeon shorthand go in, a realistic surgical preview
@@ -51,6 +55,25 @@
           quarantined three checkpoints that drifted toward under editing, so a bad checkpoint
           can never be promoted quietly.
         </p>
+      </section>
+
+      <section>
+        <div class="seclabel">
+          <div><span class="num">08</span>&ensp;<h2 style="display:inline">Credits and citations</h2></div>
+        </div>
+        <p style="font-size:14.5px;color:var(--text)">Created by Munish Persaud &amp; Logan Flickinger.</p>
+        <p style="margin-top:12px;font-size:13px;color:var(--text-2)">
+          The procedure LoRA was trained and evaluated on the HDA Plastic Surgery Face Database,
+          used under its research only license. None of its images appear on this page.
+        </p>
+        <ul style="margin:12px 0 0 18px;font-size:12.5px;line-height:1.9;color:var(--muted)">
+          <li>C. Rathgeb, D. Dogan, F. Stockhardt, M. De Marsico, C. Busch, "Plastic Surgery: An Obstacle for Deep Face Recognition?", 15th IEEE Computer Society Workshop on Biometrics (CVPRW), pp. 3510&ndash;3517, 2020.</li>
+          <li>Qwen Team, "Qwen-Image Technical Report", arXiv:2508.02324, 2025. Editor weights: <a href="https://huggingface.co/Qwen/Qwen-Image-Edit-2511" rel="noopener" style="color:var(--blue);text-decoration:none">Qwen/Qwen-Image-Edit-2511</a> (Apache 2.0).</li>
+          <li>Qwen Team, Qwen3.5, 2026. Expander weights: <a href="https://huggingface.co/Qwen/Qwen3.5-9B" rel="noopener" style="color:var(--blue);text-decoration:none">Qwen/Qwen3.5-9B</a> (Apache 2.0).</li>
+          <li>LightX2V, Qwen-Image-Edit-2511-Lightning step distillation LoRA: <a href="https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning" rel="noopener" style="color:var(--blue);text-decoration:none">lightx2v/Qwen-Image-Edit-2511-Lightning</a>.</li>
+          <li>T. Karras, S. Laine, M. Aittala, J. Hellsten, J. Lehtinen, T. Aila, "Analyzing and Improving the Image Quality of StyleGAN", CVPR 2020. Source of the synthetic faces shown here.</li>
+          <li>Metrics: DINOv2 (M. Oquab et al., 2023) for edit magnitude, ArcFace (J. Deng et al., CVPR 2019) for identity, LPIPS (R. Zhang et al., CVPR 2018), and CLIP (A. Radford et al., ICML 2021) for instruction alignment.</li>
+        </ul>
       </section>
 
       <footer>
