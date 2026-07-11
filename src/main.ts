@@ -64,7 +64,7 @@ function defaultVariant(c: Case | undefined): number {
 function render(): void {
   const m = state.manifest!;
   $("#app").innerHTML = `
-    ${sectionLabel("01", "Patient", "synthetic faces — no real patients")}
+    ${sectionLabel("01", "Patient", "synthetic faces, no real patients")}
     <div class="faces" role="group" aria-label="choose a synthetic patient">
       ${m.faces
         .map(
@@ -149,20 +149,20 @@ function renderExpansion(): void {
 
   if (c.out_of_scope) {
     slot.innerHTML = `
-      ${sectionLabel("04", "Prompt expansion", "Qwen3.5-9B, 4-bit — sees the photo + the instruction")}
+      ${sectionLabel("04", "Prompt expansion", "Qwen3.5-9B in 4 bit, it sees the photo and the instruction")}
       <div class="refusal" role="status">
-        <span class="badge">⚠ OUT OF SCOPE — the expander refused</span>
+        <span class="badge">⚠ OUT OF SCOPE, the expander refused this one</span>
         <p>${escapeHtml(c.refusal_reason ?? "Instruction falls outside the selected procedure.")}</p>
         <p style="font-style:italic;color:var(--muted);font-size:13px">
-          The guardrail layer: instructions that change identity, ethnicity, age or ask for a
-          different person never reach the image model.</p>
+          Instructions that would change identity, ethnicity, or age never reach the
+          image model.</p>
       </div>`;
     $("#result-slot").innerHTML = "";
     return;
   }
 
   slot.innerHTML = `
-    ${sectionLabel("04", "Prompt expansion", `Qwen3.5-9B, 4-bit · ${c.expand_latency_s.toFixed(1)} s on the RTX 5090`)}
+    ${sectionLabel("04", "Prompt expansion", `Qwen3.5-9B in 4 bit · ${c.expand_latency_s.toFixed(1)} s on the RTX 5090`)}
     <div class="expander-card">
       <div class="cardlabel"><span>expanded prompt → sent to the image editor</span></div>
       <div class="expanded-text" id="typewriter" aria-live="polite"></div>
@@ -228,7 +228,7 @@ function renderResult(): void {
           aria-label="comparison position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">‹›</div></div>
         <span class="tag before">before</span><span class="tag after">predicted</span>
       </div>
-      <p class="stage-note">drag the handle — arrow keys work too</p>
+      <p class="stage-note">drag the handle, arrow keys work too</p>
     </div>
 
     ${sectionLabel("06", "Automatic evaluation", "scored by the same harness that gates training")}
@@ -255,17 +255,17 @@ function metricTiles(m: Metrics): string {
   const t = (k: string, v: string, s: string) =>
     `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="s">${s}</div></div>`;
   return [
-    t("edit magnitude", m.edit_magnitude.toFixed(3), "&gt; 0.05 = a real edit happened"),
-    t("identity (ArcFace)", m.arcface_cosine === null ? "—" : m.arcface_cosine.toFixed(3), "≥ 0.6 = clearly the same person"),
+    t("edit magnitude", m.edit_magnitude.toFixed(3), "above 0.05 means a real edit happened"),
+    t("identity (ArcFace)", m.arcface_cosine === null ? "—" : m.arcface_cosine.toFixed(3), "0.6 or higher reads as the same person"),
     t("LPIPS", m.lpips.toFixed(3), "perceptual distance, sanity check"),
-    t("CLIP score", m.clip_score.toFixed(3), "instruction ↔ image alignment"),
+    t("CLIP score", m.clip_score.toFixed(3), "instruction to image alignment"),
   ].join("");
 }
 
 function canaryBadge(m: Metrics): string {
   return m.canary_static
-    ? `<div class="canary bad" role="status">⚠ <strong>canary tripped</strong> — output ≈ input (static-image collapse)</div>`
-    : `<div class="canary ok" role="status">✓ <strong>real edit detected</strong> — the static-image canary is quiet</div>`;
+    ? `<div class="canary bad" role="status">⚠ <strong>canary tripped</strong>, the output barely differs from the input</div>`
+    : `<div class="canary ok" role="status">✓ <strong>real edit detected</strong>, the canary is quiet</div>`;
 }
 
 // ---------------------------------------------------------------------------
