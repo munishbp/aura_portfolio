@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AURA — interactive pipeline explorer</title>
+    <meta name="description" content="Interactive explorer of AURA, an AI plastic-surgery outcome visualizer: real pipeline outputs, precomputed on an RTX 5090." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="kicker">P-06 · Interactive</div>
+        <h1>AURA</h1>
+        <div class="sub">AI-assisted plastic-surgery outcome visualization — explore the actual pipeline</div>
+        <p class="lede">
+          A face photo and one line of surgeon shorthand go in; a realistic, identity-preserving
+          post-surgical preview comes out. Pick a patient, a procedure, and an instruction below —
+          every prompt expansion, image, and metric you'll see was produced by the real
+          two-model pipeline, then packaged for the browser.
+        </p>
+        <div class="provenance">
+          All outputs precomputed on a single RTX 5090 · editor: Qwen-Image-Edit-2511 (NF4 + Lightning)
+          · expander: Qwen3.5-9B (4-bit) · faces are StyleGAN-synthetic — no real patients
+        </div>
+      </header>
+
+      <main id="app"><div class="loading">Loading showcase data…</div></main>
+
+      <section>
+        <div class="seclabel">
+          <div><span class="num">07</span>&ensp;<h2 style="display:inline">The pipeline</h2></div>
+        </div>
+        <p class="pipeline">
+          <span class="node">photo + shorthand</span><span class="arrow">→</span>
+          <span class="node">Qwen3.5-9B expander <em>(structure + guardrails)</em></span><span class="arrow">→</span>
+          <span class="node">Qwen-Image-Edit-2511 <em>(NF4, Lightning 8-step)</em></span><span class="arrow">→</span>
+          <span class="node">procedure LoRA <em>(QLoRA on real pairs)</em></span><span class="arrow">→</span>
+          <span class="node">eval canary <em>(DINO · ArcFace · LPIPS · CLIP)</em></span>
+        </p>
+        <p style="margin-top:12px;font-size:13.5px;color:var(--soft)">
+          The whole system — inference, LoRA training, and evaluation — runs on one 32&nbsp;GB
+          consumer GPU. The original hackathon build died from silent identity collapse (the model
+          learned to return its input); the rebuild's edit-magnitude canary makes that failure
+          impossible to miss, and you can see it reporting under every result above.
+        </p>
+      </section>
+
+      <footer>
+        <span>For consultation-research purposes only — not a medical device.</span>
+        <span><a href="https://github.com/munishbp/AURA" rel="noopener">source: github.com/munishbp/AURA</a></span>
+      </footer>
+    </div>
+  </body>
+</html>

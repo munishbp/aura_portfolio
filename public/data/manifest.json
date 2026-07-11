@@ -1,0 +1,50 @@
+{
+ "generated": "2026-07-10",
+ "editor_model": "Qwen/Qwen-Image-Edit-2511 (selective NF4 + Lightning 8-step)",
+ "expander_model": "Qwen/Qwen3.5-9B (4-bit NF4)",
+ "hardware": "1x NVIDIA RTX 5090 (32 GB)",
+ "recipe": "8 steps, cfg 1.0, seed 42",
+ "procedures": [
+  "rhinoplasty"
+ ],
+ "faces": [
+  {
+   "id": "face_0006",
+   "thumb": "thumbs/face_0006.webp"
+  }
+ ],
+ "cases": [
+  {
+   "face": "face_0006",
+   "procedure": "rhinoplasty",
+   "instruction": "reduce the dorsal hump and refine the tip",
+   "expanded_prompt": "Reduce the slight dorsal hump on the nasal bridge and gently refine the nasal tip projection to create a smoother, straighter profile line, preserving the person's identity, skin texture and tone, eye color, hairstyle, facial expression, head pose, lighting, and background exactly as in the original photo.",
+   "out_of_scope": false,
+   "expand_latency_s": 2.5,
+   "variants": [
+    {
+     "label": "zero-shot",
+     "image": "out/face-0006-rhinoplasty-dorsal-hump-zero-shot.webp",
+     "latency_s": 10.0,
+     "metrics": {
+      "edit_magnitude": 0.1742,
+      "arcface_cosine": 0.6888,
+      "lpips": 0.3198,
+      "clip_score": 0.2287,
+      "canary_static": false
+     }
+    }
+   ]
+  },
+  {
+   "face": "face_0006",
+   "procedure": "rhinoplasty",
+   "instruction": "make her look like a different person entirely",
+   "expanded_prompt": null,
+   "out_of_scope": true,
+   "refusal_reason": "Changing identity violates the instruction to preserve the person's identity, skin texture, and facial features.",
+   "expand_latency_s": 2.3,
+   "variants": []
+  }
+ ]
+}
