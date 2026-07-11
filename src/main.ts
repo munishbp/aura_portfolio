@@ -15,9 +15,9 @@ const state = {
 const $ = <T extends HTMLElement>(sel: string) => document.querySelector(sel) as T;
 
 const PROCEDURE_LABELS: Record<string, string> = {
-  rhinoplasty: "Rhinoplasty — nose",
-  facelift: "Facelift — jawline & midface",
-  blepharoplasty: "Blepharoplasty — eyelids",
+  rhinoplasty: "Rhinoplasty · nose",
+  facelift: "Facelift · jawline and midface",
+  blepharoplasty: "Blepharoplasty · eyelids",
 };
 
 // ---------------------------------------------------------------------------
@@ -30,7 +30,7 @@ async function boot(): Promise<void> {
   }
   state.manifest = (await res.json()) as Manifest;
   const m = state.manifest;
-  state.face = m.faces[0].id;
+  state.face = cleanFace(m);
   state.procedure = m.procedures[0];
   state.instruction = firstInstruction();
   state.variantIdx = defaultVariant(currentCase());
@@ -38,8 +38,12 @@ async function boot(): Promise<void> {
 }
 
 function firstInstruction(): string {
-  const c = casesFor(state.face, state.procedure).find((k) => !k.out_of_scope);
-  return c ? c.instruction : "";
+  const candidates = casesFor(state.face, state.procedure).filter((k) => !k.out_of_scope);
+  const clean = candidates.find((k) => {
+    const v = k.variants[Math.max(0, k.variants.length - 1)];
+    return v && !v.metrics.canary_static;
+  });
+  return (clean ?? candidates[0])?.instruction ?? "";
 }
 
 function casesFor(face: string, procedure: string): Case[] {
@@ -55,8 +59,25 @@ function currentCase(): Case | undefined {
 }
 
 function defaultVariant(c: Case | undefined): number {
-  // show the strongest result first (the procedure-LoRA variant is last)
-  return c ? Math.max(0, c.variants.length - 1) : 0;
+  // strongest result first: prefer the last variant that passes the canary
+  // (the procedure LoRA sits last), fall back to the last one regardless
+  if (!c || c.variants.length === 0) return 0;
+  for (let i = c.variants.length - 1; i >= 0; i--) {
+    if (!c.variants[i].metrics.canary_static) return i;
+  }
+  return c.variants.length - 1;
+}
+
+function cleanFace(m: Manifest): string {
+  // land on a face whose first case leads with a passing result
+  for (const f of m.faces) {
+    const c = m.cases.find(
+      (k) => k.face === f.id && k.procedure === m.procedures[0] && !k.out_of_scope
+    );
+    const strongest = c?.variants[c.variants.length - 1];
+    if (strongest && !strongest.metrics.canary_static) return f.id;
+  }
+  return m.faces[0].id;
 }
 
 // ---------------------------------------------------------------------------
